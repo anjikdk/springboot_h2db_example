@@ -17,4 +17,6 @@ public interface EmployeeService {
 	public List<EmployeeResource> getEmployeeDetailsByFname(String fname);
 
 	public List<EmployeeResource> getEmployeeDetailsByLname(String lname);
+
+	public List<EmployeeResource> getAllEmployeeDetails();
 }

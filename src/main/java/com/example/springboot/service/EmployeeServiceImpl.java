@@ -3,6 +3,7 @@ package com.example.springboot.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	{
 		EmployeeEntity employeeEntity = new EmployeeEntity();
 
+		employeeEntity.setEmpId(employeeResource.getEmpId());
 		employeeEntity.setAddress(employeeResource.getAddress());
 		employeeEntity.setAddress(employeeResource.getAddress());
 		employeeEntity.setFname(employeeResource.getFname());
@@ -128,5 +130,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 		
 		return empListResources;
+	}
+
+	@Override
+	public List<EmployeeResource> getAllEmployeeDetails() {
+
+		List<EmployeeEntity> employeeEntities = (List<EmployeeEntity>) employeeRepository.findAll();
+		
+		List<EmployeeResource> employeeResources = employeeEntities.stream().map(entity -> {
+			EmployeeResource employeeResource = new EmployeeResource();
+			BeanUtils.copyProperties(entity, employeeResource);
+			return employeeResource;
+		}).collect(Collectors.toList());
+		
+		return employeeResources;
 	}
 }

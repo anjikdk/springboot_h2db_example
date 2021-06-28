@@ -48,6 +48,14 @@ public class EmployeeController {
 		return new ResponseEntity<>(empListResources, HttpStatus.OK);
 	}
 	
+	@GetMapping("/findAllEmpDetails")
+	public ResponseEntity<List<EmployeeResource>> getAllEmployeeDetails()
+	{
+		List<EmployeeResource> empListResources = employeeService.getAllEmployeeDetails();
+		
+		return new ResponseEntity<>(empListResources, HttpStatus.OK);
+	}
+	
 	@PutMapping("/emp")
 	public ResponseEntity<EmployeeResource> updateEmp(@RequestBody EmployeeResource employeeResource)
 	{
@@ -68,7 +76,7 @@ public class EmployeeController {
 		return new ResponseEntity<>(sucessMessageResource, HttpStatus.OK);
 	}
 	
-	@GetMapping("/findempbyfname")
+	@GetMapping("/findEmpByFname")
 	public ResponseEntity<List<EmployeeResource>> getEmployeeDetailsByFname(@RequestParam("fname") String fname)
 	{
 		List<EmployeeResource> empListResources = employeeService.getEmployeeDetailsByFname(fname);
@@ -76,7 +84,7 @@ public class EmployeeController {
 		return new ResponseEntity<>(empListResources, HttpStatus.OK);
 	}
 	
-	@GetMapping("/findempbylname")
+	@GetMapping("/findEmpByLname")
 	public ResponseEntity<List<EmployeeResource>> getEmployeeDetailsByLname(@RequestParam("lname") String lname)
 	{
 		List<EmployeeResource> empListResources = employeeService.getEmployeeDetailsByLname(lname);
