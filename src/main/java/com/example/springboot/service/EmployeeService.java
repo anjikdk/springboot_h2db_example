@@ -13,4 +13,8 @@ public interface EmployeeService {
 	public List<EmployeeResource> getEmployeeDetailsByFnameOrLname(String name);
 
 	public void deleteEmp(Integer empId);
+
+	public List<EmployeeResource> getEmployeeDetailsByFname(String fname);
+
+	public List<EmployeeResource> getEmployeeDetailsByLname(String lname);
 }

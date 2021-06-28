@@ -67,4 +67,20 @@ public class EmployeeController {
 		
 		return new ResponseEntity<>(sucessMessageResource, HttpStatus.OK);
 	}
+	
+	@GetMapping("/findempbyfname")
+	public ResponseEntity<List<EmployeeResource>> getEmployeeDetailsByFname(@RequestParam("fname") String fname)
+	{
+		List<EmployeeResource> empListResources = employeeService.getEmployeeDetailsByFname(fname);
+		
+		return new ResponseEntity<>(empListResources, HttpStatus.OK);
+	}
+	
+	@GetMapping("/findempbylname")
+	public ResponseEntity<List<EmployeeResource>> getEmployeeDetailsByLname(@RequestParam("lname") String lname)
+	{
+		List<EmployeeResource> empListResources = employeeService.getEmployeeDetailsByLname(lname);
+		
+		return new ResponseEntity<>(empListResources, HttpStatus.OK);
+	}
 }

@@ -98,4 +98,32 @@ public class EmployeeServiceImpl implements EmployeeService {
 			throw new DataNotFoundException("Employee Data is not available for given Id: " + empId);
 		}
 	}
+
+	@Override
+	public List<EmployeeResource> getEmployeeDetailsByFname(String fname) {
+		
+		List<EmployeeEntity> empList = employeeRepository.findEmpDetailsByFname(fname);
+		List<EmployeeResource> empListResources = new ArrayList<EmployeeResource>();
+		
+		for(EmployeeEntity employeeEntity : empList)
+		{
+			empListResources.add(convertFromEmpEntityToEmpResource(employeeEntity));
+		}
+		
+		return empListResources;
+	}
+	
+	@Override
+	public List<EmployeeResource> getEmployeeDetailsByLname(String lname) {
+		
+		List<EmployeeEntity> empList = employeeRepository.findEmpDetailsByLname(lname);
+		List<EmployeeResource> empListResources = new ArrayList<EmployeeResource>();
+		
+		for(EmployeeEntity employeeEntity : empList)
+		{
+			empListResources.add(convertFromEmpEntityToEmpResource(employeeEntity));
+		}
+		
+		return empListResources;
+	}
 }
