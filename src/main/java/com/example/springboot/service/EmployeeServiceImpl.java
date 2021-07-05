@@ -14,6 +14,9 @@ import com.example.springboot.exception.DataNotFoundException;
 import com.example.springboot.repository.EmployeeRepository;
 import com.example.springboot.resource.EmployeeResource;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
@@ -23,6 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public EmployeeResource saveEmp(EmployeeResource employeeResource) {
 
+		log.info("Entered into saveEmp() method"); 
 		EmployeeEntity employeeEntity = convertFromEmpResourceToEmpEntity(employeeResource);
 
 		employeeEntity = employeeRepository.save(employeeEntity);
