@@ -1,5 +1,7 @@
 package com.example.springboot.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,4 +32,5 @@ public class EmployeeEntity {
 	private String lname;
 	private String address;
 	private Double salary;
+	private Date joiningDate;
 }

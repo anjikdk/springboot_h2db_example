@@ -1,5 +1,7 @@
 package com.example.springboot.resource;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,4 +20,5 @@ public class EmployeeResource {
 	private String lname;
 	private String address;
 	private Double salary;
+	private Date joiningDate;
 }
